@@ -1,0 +1,33 @@
+<div  *ngIf='isLoggedInAlready'>
+    <div *ngIf='restaurant'>
+        <div>
+            <h3>{{restaurant.name}}</h3>
+        </div>
+        <div class="row" *ngIf="restaurant?.items">
+            <div *ngFor="let item of restaurant.items">
+                <div class="card m-4" style="width: 18rem; height: 18rem;">
+                    <img src='assets/items.jpg' alt="items" style=" height: 14rem;">
+                    <table>
+                        <tr>
+                            <td>
+                                <span>{{item.itemName}}</span>
+                            </td>
+                        </tr>    
+                        <tr>      
+                            <td>
+                                <span>₹ </span>
+                                <span>{{item.price}}</span>
+                            </td>
+                            <td>
+                                <button (click)="addToCart(restaurant.hotelId, restaurant.name, item.id, item.itemName, item.price)"> + </button>
+                            </td>
+                            <td>
+                                <button (click)="removeFromCart(restaurant.hotelId, restaurant.name, item.id, item.itemName, item.price)"> - </button>
+                            </td>
+                        </tr>
+                    </table>                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
